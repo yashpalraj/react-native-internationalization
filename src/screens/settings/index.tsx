@@ -1,9 +1,11 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useLayoutEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { StackScreenProps } from '@react-navigation/stack';
-import { MainStackTypeParamList } from '../navigation/TypeParamList';
+import { MainStackTypeParamList } from '../../../App';
 import { t } from 'i18next';
+import { DefaultTheme } from '@react-navigation/native';
 
 const languages = [
 	{ code: 'en', label: t('language:english') },
@@ -39,9 +41,10 @@ const Settings = ({ navigation, route }: Props) => {
 							i18n.changeLanguage(currentLang.code);
 						}}
 						style={{
-							color: '#000000',
+							color: selectedLanguage ? DefaultTheme.colors.primary : '#000000',
 							padding: 10,
-							backgroundColor: selectedLanguage ? '#c2185b' : '#FFFFFF',
+							fontSize: 18,
+							fontWeight: selectedLanguage ? 'bold' : 'normal',
 						}}>
 						{currentLang.label}
 					</Text>
